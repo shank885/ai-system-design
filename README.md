@@ -24,6 +24,7 @@ Part VII is dedicated entirely to AI systems.
 | Self-test | Each module ends with a quiz; answers are in `<details>` blocks |
 | Look up a term | See [glossary.md](glossary.md) |
 | Estimate capacity | See [cheatsheets/numbers.md](cheatsheets/numbers.md) |
+| Read real-world engineering write-ups alongside a module | See [cheatsheets/further-reading.md](cheatsheets/further-reading.md) |
 
 Progress tracker: [PROGRESS.md](PROGRESS.md)
 
@@ -46,9 +47,9 @@ Progress tracker: [PROGRESS.md](PROGRESS.md)
 ### Part II — Storage
 | # | Module | Status |
 |---|---|---|
-| 04 | Storage Engine Internals: B-Trees, LSM-Trees, WAL, Indexes | ⬜ |
+| 04 | Storage Engine Internals: B-Trees, LSM-Trees, WAL, Indexes, Erasure Coding | ⬜ |
 | 05 | Relational Databases & Data Modeling | ⬜ |
-| 06 | Transactions: ACID, Isolation Levels, MVCC, Locking | ⬜ |
+| 06 | Transactions: ACID, Isolation Levels, MVCC, Pessimistic/Optimistic Locking | ⬜ |
 | 07 | The NoSQL Landscape: KV, Document, Wide-Column, Graph, Time-Series, Vector | ⬜ |
 | 08 | Caching: Patterns, Eviction, Redis, CDNs, Stampedes | ⬜ |
 
@@ -58,7 +59,7 @@ Progress tracker: [PROGRESS.md](PROGRESS.md)
 | 09 | Replication: Leader/Follower, Multi-Leader, Leaderless, Quorums | ⬜ |
 | 10 | Partitioning & Sharding: Consistent Hashing, Rebalancing, Hotspots | ⬜ |
 | 11 | CAP, PACELC & Consistency Models | ⬜ |
-| 12 | Consensus, Coordination & Time: Raft, etcd, Locks, Vector Clocks | ⬜ |
+| 12 | Consensus, Coordination & Time: Raft, etcd, Distributed Locks, Failure Detection (Heartbeats/Gossip/Phi-Accrual), Vector Clocks | ⬜ |
 | 13 | Distributed Transactions: 2PC, Sagas, Outbox, Idempotency | ⬜ |
 
 ### Part IV — Scale and Traffic
@@ -66,7 +67,7 @@ Progress tracker: [PROGRESS.md](PROGRESS.md)
 |---|---|---|
 | 14 | Load Balancing, Proxies & Service Discovery | ⬜ |
 | 15 | Messaging & Streaming: Queues vs Logs, Kafka, Delivery Semantics | ⬜ |
-| 16 | Batch & Stream Processing: MapReduce, Spark, Flink, CDC | ⬜ |
+| 16 | Batch & Stream Processing: MapReduce, Spark, Flink, CDC, Event Sourcing | ⬜ |
 | 17 | Rate Limiting, Quotas & Admission Control | ⬜ |
 | 18 | Resiliency: Timeouts, Retries, Circuit Breakers, Degradation | ⬜ |
 
@@ -75,7 +76,7 @@ Progress tracker: [PROGRESS.md](PROGRESS.md)
 |---|---|---|
 | 19 | Observability: Metrics, Logs, Traces, SLI/SLO/Error Budgets | ⬜ |
 | 20 | Deployment & Infrastructure: Containers, K8s, Canary, Multi-Region, DR | ⬜ |
-| 21 | Security: AuthN/AuthZ, OAuth/OIDC, Encryption, Multi-Tenancy | ⬜ |
+| 21 | Security: AuthN/AuthZ, OAuth/OIDC, Encoding vs Encryption vs Tokenization, Password Storage, Multi-Tenancy | ⬜ |
 
 ### Part VI — Architecture at Large
 | # | Module | Status |
@@ -108,6 +109,15 @@ Progress tracker: [PROGRESS.md](PROGRESS.md)
 | 39 | Case Study: Recommendation System at Scale | ⬜ |
 | 40 | Case Study: LLM Serving Platform (ChatGPT-scale) | ⬜ |
 | 41 | Case Study: Enterprise RAG over 100M Documents | ⬜ |
+| 42 | Bonus Case Study: Proximity Service & Geospatial Indexing (Quadtree/Geohash) | ⬜ |
+| 43 | Bonus Case Study: Design Gmail (Email at Scale) | ⬜ |
+
+### Part IX — Curated Industry Case Studies (Supplementary Reading)
+
+Not standalone modules — these are real engineering blog write-ups mapped to
+the module they reinforce, to read *after* that module so the theory has
+somewhere concrete to land. Tracked in
+[cheatsheets/further-reading.md](cheatsheets/further-reading.md).
 
 ---
 

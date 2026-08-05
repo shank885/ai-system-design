@@ -46,3 +46,5 @@ Legend: ⬜ not started · 🔶 in progress · ✅ done (quiz passed)
 | 39 | Case Study: Recommendation System | ⬜ | |
 | 40 | Case Study: LLM Serving Platform | ⬜ | |
 | 41 | Case Study: Enterprise RAG | ⬜ | |
+| 42 | Bonus Case Study: Proximity Service & Geospatial Indexing | ⬜ | |
+| 43 | Bonus Case Study: Design Gmail | ⬜ | |
