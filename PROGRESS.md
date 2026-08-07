@@ -5,7 +5,7 @@ Legend: ⬜ not started · 🔶 in progress · ✅ done (quiz passed)
 | # | Module | Status | Date Completed |
 |---|---|---|---|
 | 00 | Mental Models, Vocabulary & Back-of-the-Envelope Math | ✅ | 2026-08-06 |
-| 01 | Inside One Machine | ⬜ | |
+| 01 | Inside One Machine | ✅ | 2026-08-07 |
 | 02 | Networking for System Designers | ⬜ | |
 | 03 | API Design & Communication Styles | ⬜ | |
 | 04 | Storage Engine Internals | ⬜ | |
