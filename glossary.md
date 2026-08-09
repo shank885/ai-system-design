@@ -64,3 +64,21 @@ When correctness depends on unpredictable timing/interleaving of concurrent oper
 
 ### Concurrency vs Parallelism
 Concurrency: structuring a program to make progress on multiple tasks over overlapping time, without requiring simultaneous execution (e.g. a single-core event loop). Parallelism: literally executing multiple tasks at the same physical instant, requiring multiple cores/machines. See [Module 01](modules/01-inside-one-machine.md).
+
+### End-to-End Principle
+Keep the network core (routers, IP) simple/dumb, push reliability and intelligence to the endpoints. Explains why IP is best-effort and TCP (not the network) provides reliability. See [Module 02](modules/02-networking.md).
+
+### TCP vs UDP
+TCP: reliable, ordered, connection-oriented, congestion-controlled byte stream (handshake + retransmission cost). UDP: fire-and-forget datagrams, no ordering/reliability guarantees, low overhead. Choose based on whether late-but-complete or timely-but-imperfect matters more. See [Module 02](modules/02-networking.md).
+
+### DNS TTL
+How long a DNS record is cached before resolvers re-fetch it; trades freshness for lookup cost/speed, same trade-off as application caching (Module 08). Explains delayed propagation after DNS changes. See [Module 02](modules/02-networking.md).
+
+### TLS Handshake
+Negotiates encryption and verifies server identity via certificates on top of TCP; uses asymmetric crypto briefly to bootstrap a cheap symmetric session key. Costs additional round trips (fewer in TLS 1.3, near-zero with 0-RTT resumption). See [Module 02](modules/02-networking.md).
+
+### Head-of-Line Blocking
+When one stalled/lost unit of data blocks delivery of later, already-available data behind it. Occurs per-connection in HTTP/1.1, per-TCP-connection in HTTP/2 (despite app-level multiplexing), and is eliminated per-stream in HTTP/3 (QUIC/UDP). See [Module 02](modules/02-networking.md).
+
+### HTTP/1.1 vs HTTP/2 vs HTTP/3
+1.1: one in-flight request per connection. 2: multiplexed streams over one TCP connection (still TCP-level head-of-line blocking). 3: built on QUIC/UDP, per-stream reliability, integrated TLS 1.3, survives client IP changes. See [Module 02](modules/02-networking.md).
