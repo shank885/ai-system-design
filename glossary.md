@@ -82,3 +82,24 @@ When one stalled/lost unit of data blocks delivery of later, already-available d
 
 ### HTTP/1.1 vs HTTP/2 vs HTTP/3
 1.1: one in-flight request per connection. 2: multiplexed streams over one TCP connection (still TCP-level head-of-line blocking). 3: built on QUIC/UDP, per-stream reliability, integrated TLS 1.3, survives client IP changes. See [Module 02](modules/02-networking.md).
+
+### Idempotency Key
+A client-generated unique ID attached to a non-idempotent request (e.g. `POST`) so the server can recognize and dedupe retries, converting an unsafe-to-retry operation into one safe to retry. See [Module 03](modules/03-api-design.md).
+
+### Cursor-Based Pagination
+Paginating by anchoring to a stable data reference (e.g. last-seen ID/timestamp) rather than numeric offset; stays correct under concurrent writes and stays fast at depth, unlike offset/limit pagination. See [Module 03](modules/03-api-design.md).
+
+### gRPC
+RPC framework over HTTP/2 using protobuf (compact binary, schema'd) with native streaming modes; favored for internal service-to-service traffic over REST/JSON's broader compatibility and debuggability. See [Module 03](modules/03-api-design.md).
+
+### N+1 Query Problem
+Needing one call plus one additional call per item in a result set (e.g. fetching each post's author separately). Occurs in naive REST/ORM code and reappears inside GraphQL resolvers; standard fix is batching via a dataloader pattern. See [Module 03](modules/03-api-design.md).
+
+### Polling vs Long Polling vs SSE vs WebSockets
+Increasingly capable/costly real-time techniques: short polling (wasteful repeated asks), long polling (server holds request open), SSE (one-directional server→client stream over HTTP), WebSockets (full bidirectional persistent channel). Pick the cheapest one matching the actual directionality need. See [Module 03](modules/03-api-design.md).
+
+### Batching vs Concurrency (Fan-out)
+Batching reduces the number of round trips for many similar operations (trades latency for throughput). Concurrency/fan-out doesn't reduce call count but runs independent calls in parallel, cutting wall-clock time to ~the slowest call instead of the sum. Often needed together. See [Module 03](modules/03-api-design.md).
+
+### API Gateway vs Load Balancer
+A gateway routes by request meaning across different services and handles cross-cutting concerns (auth, rate limiting); a load balancer distributes traffic across interchangeable instances of one service. Commonly deployed together. See [Module 03](modules/03-api-design.md).

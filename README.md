@@ -42,7 +42,7 @@ Progress tracker: [PROGRESS.md](PROGRESS.md)
 |---|---|---|
 | 01 | [Inside One Machine: CPU, Memory, Disk, OS, Concurrency](modules/01-inside-one-machine.md) | ✅ |
 | 02 | [Networking for System Designers: IP, TCP/UDP, DNS, TLS, HTTP/1-2-3](modules/02-networking.md) | ✅ |
-| 03 | API Design & Communication Styles: REST, RPC, gRPC, GraphQL, WebSockets | ⬜ |
+| 03 | [API Design & Communication Styles: REST, RPC, gRPC, GraphQL, WebSockets](modules/03-api-design.md) | ✅ |
 
 ### Part II — Storage
 | # | Module | Status |

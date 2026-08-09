@@ -7,7 +7,7 @@ Legend: ⬜ not started · 🔶 in progress · ✅ done (quiz passed)
 | 00 | Mental Models, Vocabulary & Back-of-the-Envelope Math | ✅ | 2026-08-06 |
 | 01 | Inside One Machine | ✅ | 2026-08-07 |
 | 02 | Networking for System Designers | ✅ | 2026-08-07 |
-| 03 | API Design & Communication Styles | ⬜ | |
+| 03 | API Design & Communication Styles | ✅ | 2026-08-07 |
 | 04 | Storage Engine Internals | ⬜ | |
 | 05 | Relational Databases & Data Modeling | ⬜ | |
 | 06 | Transactions | ⬜ | |
