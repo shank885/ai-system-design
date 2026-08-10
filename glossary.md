@@ -103,3 +103,21 @@ Batching reduces the number of round trips for many similar operations (trades l
 
 ### API Gateway vs Load Balancer
 A gateway routes by request meaning across different services and handles cross-cutting concerns (auth, rate limiting); a load balancer distributes traffic across interchangeable instances of one service. Commonly deployed together. See [Module 03](modules/03-api-design.md).
+
+### B-Tree
+Balanced, page-sized-node tree with high fanout; ~3-4 disk reads to look up any row even at huge scale. Reads are fast; writes update pages in place (random writes). Powers PostgreSQL, MySQL/InnoDB, SQLite. See [Module 04](modules/04-storage-engines.md).
+
+### LSM-Tree (Log-Structured Merge-Tree)
+Writes go to an in-memory memtable + WAL, flushed to disk as immutable sorted SSTables via sequential writes; reads may check multiple SSTables. Write-optimized; powers Cassandra, RocksDB, LevelDB, HBase. See [Module 04](modules/04-storage-engines.md).
+
+### Write-Ahead Log (WAL)
+Append intended changes to a sequential log before modifying data in place; enables crash recovery and makes durability cheap (sequential write) even when the protected update is a random write. See [Module 04](modules/04-storage-engines.md).
+
+### Bloom Filter
+Compact, probabilistic structure that definitively says "key not present" (no false negatives, some false positives), letting LSM-tree reads skip SSTables that can't contain a key without touching disk. See [Module 04](modules/04-storage-engines.md).
+
+### Compaction
+Background process merging multiple SSTables into fewer, larger ones, discarding stale/overwritten entries; tunes the read/write/space amplification trade-off in LSM-tree systems. See [Module 04](modules/04-storage-engines.md).
+
+### Erasure Coding
+Splits data into k fragments + m parity fragments, reconstructable from any k of k+m; much lower storage overhead than full replication (e.g. ~1.4x vs 3x+) at the cost of read/reconstruction latency and CPU. Favored for cold/large-volume data (object stores, archival). See [Module 04](modules/04-storage-engines.md).

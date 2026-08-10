@@ -47,7 +47,7 @@ Progress tracker: [PROGRESS.md](PROGRESS.md)
 ### Part II — Storage
 | # | Module | Status |
 |---|---|---|
-| 04 | Storage Engine Internals: B-Trees, LSM-Trees, WAL, Indexes, Erasure Coding | ⬜ |
+| 04 | [Storage Engine Internals: B-Trees, LSM-Trees, WAL, Indexes, Erasure Coding](modules/04-storage-engines.md) | ✅ |
 | 05 | Relational Databases & Data Modeling | ⬜ |
 | 06 | Transactions: ACID, Isolation Levels, MVCC, Pessimistic/Optimistic Locking | ⬜ |
 | 07 | The NoSQL Landscape: KV, Document, Wide-Column, Graph, Time-Series, Vector | ⬜ |

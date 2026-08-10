@@ -8,7 +8,7 @@ Legend: ⬜ not started · 🔶 in progress · ✅ done (quiz passed)
 | 01 | Inside One Machine | ✅ | 2026-08-07 |
 | 02 | Networking for System Designers | ✅ | 2026-08-07 |
 | 03 | API Design & Communication Styles | ✅ | 2026-08-07 |
-| 04 | Storage Engine Internals | ⬜ | |
+| 04 | Storage Engine Internals | ✅ | 2026-08-10 |
 | 05 | Relational Databases & Data Modeling | ⬜ | |
 | 06 | Transactions | ⬜ | |
 | 07 | The NoSQL Landscape | ⬜ | |
