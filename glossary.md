@@ -121,3 +121,18 @@ Background process merging multiple SSTables into fewer, larger ones, discarding
 
 ### Erasure Coding
 Splits data into k fragments + m parity fragments, reconstructable from any k of k+m; much lower storage overhead than full replication (e.g. ~1.4x vs 3x+) at the cost of read/reconstruction latency and CPU. Favored for cold/large-volume data (object stores, archival). See [Module 04](modules/04-storage-engines.md).
+
+### Primary Key / Clustered Index
+The column(s) uniquely identifying a row; most relational engines physically organize the table's B-tree around it. Prefer immutable generated IDs over mutable business fields, since changing the PK can mean relocating the row and updating every foreign key. See [Module 05](modules/05-relational-databases.md).
+
+### Normalization (1NF/2NF/3NF) / Update Anomaly
+Structuring tables so each fact is stored once, avoiding update anomalies (a duplicated fact going stale in some rows but not others). 3NF is the practical working target; normalize first, denormalize deliberately. See [Module 05](modules/05-relational-databases.md).
+
+### Join Strategies (Nested Loop / Hash / Merge)
+How a query planner physically combines rows from two tables. An indexed join column enables fast strategies (indexed nested loop, merge join); an unindexed one degrades toward near-full-table-scan cost. Check `EXPLAIN` before assuming a join is slow. See [Module 05](modules/05-relational-databases.md).
+
+### Denormalization
+Deliberate redundancy to avoid read-time joins, paid for with write-side sync complexity and reintroduced update-anomaly risk. Sync mechanisms: dual writes (risky), triggers, materialized views, async CDC. A targeted optimization for a measured hot read path, not a default. See [Module 05](modules/05-relational-databases.md).
+
+### Training/Serving Skew
+When a model's training-time feature pipeline and its real-time serving-time feature pipeline drift out of sync, so the model sees inference data that doesn't match what it learned from — the ML-specific consequence of denormalized-copy drift, silently degrading accuracy rather than raising an error. See [Module 05](modules/05-relational-databases.md), expanded in Module 24.
