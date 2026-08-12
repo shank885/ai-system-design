@@ -136,3 +136,18 @@ Deliberate redundancy to avoid read-time joins, paid for with write-side sync co
 
 ### Training/Serving Skew
 When a model's training-time feature pipeline and its real-time serving-time feature pipeline drift out of sync, so the model sees inference data that doesn't match what it learned from — the ML-specific consequence of denormalized-copy drift, silently degrading accuracy rather than raising an error. See [Module 05](modules/05-relational-databases.md), expanded in Module 24.
+
+### ACID
+Atomicity (all-or-nothing via WAL/undo logs), Consistency (constraints respected — the ACID-specific sense, distinct from CAP's or the everyday sense), Isolation (concurrent transactions act as if serial — a configurable spectrum), Durability (commit survives crash via fsync'd WAL). See [Module 06](modules/06-transactions.md).
+
+### Isolation Levels (Read Uncommitted/Committed, Repeatable Read, Serializable)
+A spectrum of how much concurrent-transaction interleaving is allowed, each level defined by which anomalies it still permits. Weakest to strongest: Read Uncommitted, Read Committed (common default, no dirty reads), Repeatable Read (MySQL default, no non-repeatable reads), Serializable (acts fully serial). See [Module 06](modules/06-transactions.md).
+
+### Lost Update / Write Skew
+Lost update: two transactions read-modify-write the same value, one overwrites the other's result — the database-layer version of Module 01's race condition. Write skew: each transaction's individual write is valid on its own, but the combination violates a cross-row invariant neither could see the other breaking. See [Module 06](modules/06-transactions.md).
+
+### MVCC (Multi-Version Concurrency Control)
+Keeps multiple versions of each row; each transaction reads from a consistent snapshot so readers never block writers and vice versa. Explains the Read Committed (fresh snapshot per statement) vs Repeatable Read (one snapshot per transaction) distinction. See [Module 06](modules/06-transactions.md).
+
+### Pessimistic vs Optimistic Locking
+Pessimistic: lock a row before touching it, others wait (safe, less concurrent, deadlock risk) — best under frequent contention. Optimistic: check a version at write time, reject and retry on conflict (no blocking) — best when conflicts are rare; wasteful under high contention. See [Module 06](modules/06-transactions.md).
