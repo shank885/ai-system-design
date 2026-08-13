@@ -50,7 +50,7 @@ Progress tracker: [PROGRESS.md](PROGRESS.md)
 | 04 | [Storage Engine Internals: B-Trees, LSM-Trees, WAL, Indexes, Erasure Coding](modules/04-storage-engines.md) | ✅ |
 | 05 | [Relational Databases & Data Modeling](modules/05-relational-databases.md) | ✅ |
 | 06 | [Transactions: ACID, Isolation Levels, MVCC, Pessimistic/Optimistic Locking](modules/06-transactions.md) | ✅ |
-| 07 | The NoSQL Landscape: KV, Document, Wide-Column, Graph, Time-Series, Vector | ⬜ |
+| 07 | [The NoSQL Landscape: KV, Document, Wide-Column, Graph, Time-Series, Vector](modules/07-nosql-landscape.md) | ✅ |
 | 08 | Caching: Patterns, Eviction, Redis, CDNs, Stampedes | ⬜ |
 
 ### Part III — Distribution

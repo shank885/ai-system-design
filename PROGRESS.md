@@ -11,7 +11,7 @@ Legend: ⬜ not started · 🔶 in progress · ✅ done (quiz passed)
 | 04 | Storage Engine Internals | ✅ | 2026-08-10 |
 | 05 | Relational Databases & Data Modeling | ✅ | 2026-08-11 |
 | 06 | Transactions | ✅ | 2026-08-12 |
-| 07 | The NoSQL Landscape | ⬜ | |
+| 07 | The NoSQL Landscape | ✅ | 2026-08-13 |
 | 08 | Caching | ⬜ | |
 | 09 | Replication | ⬜ | |
 | 10 | Partitioning & Sharding | ⬜ | |

@@ -151,3 +151,21 @@ Keeps multiple versions of each row; each transaction reads from a consistent sn
 
 ### Pessimistic vs Optimistic Locking
 Pessimistic: lock a row before touching it, others wait (safe, less concurrent, deadlock risk) — best under frequent contention. Optimistic: check a version at write time, reject and retry on conflict (no blocking) — best when conflicts are rare; wasteful under high contention. See [Module 06](modules/06-transactions.md).
+
+### Key-Value Store
+Exact-key lookups only (`get`/`put`), value treated as an opaque blob with no secondary query support. Best for caching, sessions, simple lookups (Redis, DynamoDB, etcd). See [Module 07](modules/07-nosql-landscape.md).
+
+### Document Store (Embed vs Reference)
+Stores semi-structured, field-queryable documents (MongoDB, Couchbase). Embed vs reference mirrors normalize/denormalize: embed when nested data is always read/written with its parent and not shared; reference when it's large, independently updated, or reused across parents. See [Module 07](modules/07-nosql-landscape.md).
+
+### Wide-Column Store / Query-First Modeling
+LSM-tree-based (Cassandra, HBase, Bigtable); schema is designed around specific queries via partition key + clustering columns, often creating multiple denormalized tables per query pattern rather than one normalized table plus joins. See [Module 07](modules/07-nosql-landscape.md).
+
+### Graph Database / Index-Free Adjacency
+Nodes store direct pointers to neighbors, so traversal is pointer-following rather than a join per hop — built for deep/unknown-depth relationship traversal (Neo4j, Neptune), not just "data has relationships." See [Module 07](modules/07-nosql-landscape.md).
+
+### Time-Series Database
+Optimized for high-volume timestamped writes and time-range aggregation reads via time-based partitioning, downsampling/rollups, and delta-encoded compression (InfluxDB, TimescaleDB, Prometheus). See [Module 07](modules/07-nosql-landscape.md).
+
+### Vector Database / ANN Search
+Stores embeddings and supports approximate nearest-neighbor search via specialized indexes (HNSW/IVF, Module 26) since brute-force O(n) search doesn't scale; the storage layer under RAG systems (Pinecone, Weaviate, Milvus, pgvector). See [Module 07](modules/07-nosql-landscape.md).
