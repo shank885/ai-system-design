@@ -169,3 +169,15 @@ Optimized for high-volume timestamped writes and time-range aggregation reads vi
 
 ### Vector Database / ANN Search
 Stores embeddings and supports approximate nearest-neighbor search via specialized indexes (HNSW/IVF, Module 26) since brute-force O(n) search doesn't scale; the storage layer under RAG systems (Pinecone, Weaviate, Milvus, pgvector). See [Module 07](modules/07-nosql-landscape.md).
+
+### Cache-Aside / Write-Through / Write-Behind / Refresh-Ahead
+Cache-aside: app reads cache, falls back to DB on miss and populates cache (common default, staleness window). Write-through: writes hit cache+DB synchronously (always fresh, slower writes). Write-behind: writes hit cache first, DB async later (fast, durability risk). Refresh-ahead: proactively refresh hot keys before expiry. See [Module 08](modules/08-caching.md).
+
+### Eviction Policy (LRU/LFU/FIFO) vs TTL
+Eviction policy decides what to remove when a full cache needs space (LRU=recency, LFU=frequency, FIFO=insertion order); TTL bounds staleness independently. Used together — an unexpired item can still be evicted for capacity. See [Module 08](modules/08-caching.md).
+
+### Cache Stampede (Thundering Herd)
+Many concurrent requests miss the same expired/hot key simultaneously and all hit the database at once. Mitigated by request coalescing/single-flight (only one request recomputes, others wait and share), locking, probabilistic early expiration, or stale-while-revalidate. See [Module 08](modules/08-caching.md).
+
+### Cache Invalidation
+Keeping a cache in sync with its source of truth: TTL (simplest, bounded staleness), explicit invalidation on write (precise, easy to miss a path), event-driven via CDC (decoupled, adds delay). Centralizing cache-key construction avoids silent key-mismatch bugs across services. See [Module 08](modules/08-caching.md).

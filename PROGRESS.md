@@ -12,7 +12,7 @@ Legend: ⬜ not started · 🔶 in progress · ✅ done (quiz passed)
 | 05 | Relational Databases & Data Modeling | ✅ | 2026-08-11 |
 | 06 | Transactions | ✅ | 2026-08-12 |
 | 07 | The NoSQL Landscape | ✅ | 2026-08-13 |
-| 08 | Caching | ⬜ | |
+| 08 | Caching | ✅ | 2026-08-16 |
 | 09 | Replication | ⬜ | |
 | 10 | Partitioning & Sharding | ⬜ | |
 | 11 | CAP, PACELC & Consistency Models | ⬜ | |

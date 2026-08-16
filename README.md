@@ -51,7 +51,7 @@ Progress tracker: [PROGRESS.md](PROGRESS.md)
 | 05 | [Relational Databases & Data Modeling](modules/05-relational-databases.md) | ✅ |
 | 06 | [Transactions: ACID, Isolation Levels, MVCC, Pessimistic/Optimistic Locking](modules/06-transactions.md) | ✅ |
 | 07 | [The NoSQL Landscape: KV, Document, Wide-Column, Graph, Time-Series, Vector](modules/07-nosql-landscape.md) | ✅ |
-| 08 | Caching: Patterns, Eviction, Redis, CDNs, Stampedes | ⬜ |
+| 08 | [Caching: Patterns, Eviction, Redis, CDNs, Stampedes](modules/08-caching.md) | ✅ |
 
 ### Part III — Distribution
 | # | Module | Status |
