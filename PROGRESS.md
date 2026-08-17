@@ -13,7 +13,7 @@ Legend: ⬜ not started · 🔶 in progress · ✅ done (quiz passed)
 | 06 | Transactions | ✅ | 2026-08-12 |
 | 07 | The NoSQL Landscape | ✅ | 2026-08-13 |
 | 08 | Caching | ✅ | 2026-08-16 |
-| 09 | Replication | ⬜ | |
+| 09 | Replication | ✅ | 2026-08-17 |
 | 10 | Partitioning & Sharding | ⬜ | |
 | 11 | CAP, PACELC & Consistency Models | ⬜ | |
 | 12 | Consensus, Coordination & Time | ⬜ | |

@@ -181,3 +181,15 @@ Many concurrent requests miss the same expired/hot key simultaneously and all hi
 
 ### Cache Invalidation
 Keeping a cache in sync with its source of truth: TTL (simplest, bounded staleness), explicit invalidation on write (precise, easy to miss a path), event-driven via CDC (decoupled, adds delay). Centralizing cache-key construction avoids silent key-mismatch bugs across services. See [Module 08](modules/08-caching.md).
+
+### Single-Leader / Multi-Leader / Leaderless Replication
+Single-leader: all writes to one node, followers replay a streamed log (WAL shipping); simplest, no conflicts. Multi-leader: several write-accepting nodes (e.g. one per region) enable local writes but require conflict resolution (LWW, app merge, CRDTs). Leaderless: writes/reads go directly to multiple replicas, reconciled via quorums. See [Module 09](modules/09-replication.md).
+
+### Replication Lag Anomalies
+Effects of asynchronous replication: read-your-writes (can't see your own recent write on a lagging replica), monotonic reads (a later read shows older data than an earlier one from a different replica), consistent prefix (causally-ordered writes appear out of order). Each has a specific routing-based mitigation. See [Module 09](modules/09-replication.md).
+
+### Quorum (W + R > N)
+With N total replicas, W writes must ack a write and R replicas must be queried for a read; if W+R > N, the read and write sets are guaranteed to overlap (pigeonhole), so a read always sees the latest acknowledged write among contacted replicas. W/R/N are tunable per-operation to trade consistency vs availability vs latency. See [Module 09](modules/09-replication.md).
+
+### Read Repair / Hinted Handoff
+Read repair: a quorum read that finds stale replicas opportunistically writes the current version back to them, healing inconsistency as a byproduct of normal reads. Hinted handoff: a write meant for an unreachable replica is temporarily held elsewhere and delivered once that replica recovers. See [Module 09](modules/09-replication.md).

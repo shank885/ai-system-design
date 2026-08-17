@@ -56,7 +56,7 @@ Progress tracker: [PROGRESS.md](PROGRESS.md)
 ### Part III — Distribution
 | # | Module | Status |
 |---|---|---|
-| 09 | Replication: Leader/Follower, Multi-Leader, Leaderless, Quorums | ⬜ |
+| 09 | [Replication: Leader/Follower, Multi-Leader, Leaderless, Quorums](modules/09-replication.md) | ✅ |
 | 10 | Partitioning & Sharding: Consistent Hashing, Rebalancing, Hotspots | ⬜ |
 | 11 | CAP, PACELC & Consistency Models | ⬜ |
 | 12 | Consensus, Coordination & Time: Raft, etcd, Distributed Locks, Failure Detection (Heartbeats/Gossip/Phi-Accrual), Vector Clocks | ⬜ |
