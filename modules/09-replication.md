@@ -468,3 +468,5 @@ replication solves durability/availability/read-scaling, but *write*
 scaling and handling datasets too large for one machine requires
 splitting data across independent shards — the actual mechanism, and its
 own set of hard problems (rebalancing, hot keys), covered next.
+
+---
