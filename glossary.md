@@ -193,3 +193,18 @@ With N total replicas, W writes must ack a write and R replicas must be queried 
 
 ### Read Repair / Hinted Handoff
 Read repair: a quorum read that finds stale replicas opportunistically writes the current version back to them, healing inconsistency as a byproduct of normal reads. Hinted handoff: a write meant for an unreachable replica is temporarily held elsewhere and delivered once that replica recovers. See [Module 09](modules/09-replication.md).
+
+### Partitioning / Sharding
+Splitting different subsets of data across machines (orthogonal to replication, which copies the same data) so storage and write throughput scale roughly linearly with node count. Usually combined with replication: each shard is itself replicated. See [Module 10](modules/10-partitioning-sharding.md).
+
+### Range vs Hash Partitioning
+Range: contiguous key ranges per partition, enables efficient range queries but risks hotspots under skewed/sequential keys (e.g. timestamps). Hash: `hash(key)` spreads keys near-uniformly, avoiding hotspots but destroying efficient range queries (scatter-gather instead). See [Module 10](modules/10-partitioning-sharding.md).
+
+### Consistent Hashing / Virtual Nodes
+Maps keys and nodes onto the same hash ring; adding/removing a node only moves the keys in its immediate ring neighborhood, not the whole dataset. Virtual nodes give each physical node many ring positions to smooth uneven spacing and rebalancing load. See [Module 10](modules/10-partitioning-sharding.md).
+
+### Hot Key / Key Salting
+A small number of keys receiving disproportionate traffic overwhelms their one partition despite spare cluster capacity (the partitioning-layer analog of a cache stampede). Key salting appends a random suffix to spread a hot key's writes across sub-keys/partitions, at the cost of needing to aggregate sub-keys on read. See [Module 10](modules/10-partitioning-sharding.md).
+
+### Local vs Global Secondary Index (under partitioning)
+Local/document-partitioned: index co-located per partition, fast writes but reads require scatter-gather across every partition. Global/term-partitioned: index partitioned by indexed value, fast targeted reads but writes may cross partitions, often async. See [Module 10](modules/10-partitioning-sharding.md).
