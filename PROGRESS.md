@@ -15,7 +15,7 @@ Legend: ⬜ not started · 🔶 in progress · ✅ done (quiz passed)
 | 08 | Caching | ✅ | 2026-08-16 |
 | 09 | Replication | ✅ | 2026-08-17 |
 | 10 | Partitioning & Sharding | ✅ | 2026-08-19 |
-| 11 | CAP, PACELC & Consistency Models | ⬜ | |
+| 11 | CAP, PACELC & Consistency Models | ✅ | 2026-08-20 |
 | 12 | Consensus, Coordination & Time | ⬜ | |
 | 13 | Distributed Transactions | ⬜ | |
 | 14 | Load Balancing, Proxies & Service Discovery | ⬜ | |

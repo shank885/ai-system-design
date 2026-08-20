@@ -208,3 +208,12 @@ A small number of keys receiving disproportionate traffic overwhelms their one p
 
 ### Local vs Global Secondary Index (under partitioning)
 Local/document-partitioned: index co-located per partition, fast writes but reads require scatter-gather across every partition. Global/term-partitioned: index partitioned by indexed value, fast targeted reads but writes may cross partitions, often async. See [Module 10](modules/10-partitioning-sharding.md).
+
+### CAP Theorem
+During a network partition, a system must choose Consistency (linearizability) or Availability — not both; partition tolerance itself isn't optional for a real distributed system. CAP says nothing about behavior when there's no partition. See [Module 11](modules/11-cap-pacelc-consistency.md).
+
+### PACELC
+Extends CAP: if Partitioned, choose Availability or Consistency (that's CAP); Else (normal operation), choose Latency or Consistency. Captures the trade-off that exists even with a healthy network — e.g. quorum W/R tuning is a PACELC knob, not a CAP knob. See [Module 11](modules/11-cap-pacelc-consistency.md).
+
+### Consistency Model Spectrum
+Strongest to weakest: Linearizable (single global real-time order) → Sequential (single order respecting per-client program order) → Causal (only causally-related ops ordered; prevents consistent-prefix violations) → Read-your-writes/Monotonic reads (session guarantees) → Eventual (no ordering guarantee, weakest/cheapest). See [Module 11](modules/11-cap-pacelc-consistency.md).
