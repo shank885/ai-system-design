@@ -217,3 +217,18 @@ Extends CAP: if Partitioned, choose Availability or Consistency (that's CAP); El
 
 ### Consistency Model Spectrum
 Strongest to weakest: Linearizable (single global real-time order) → Sequential (single order respecting per-client program order) → Causal (only causally-related ops ordered; prevents consistent-prefix violations) → Read-your-writes/Monotonic reads (session guarantees) → Eventual (no ordering guarantee, weakest/cheapest). See [Module 11](modules/11-cap-pacelc-consistency.md).
+
+### Consensus / Raft / FLP Impossibility
+Getting nodes to agree on a value (agreement, validity, termination) despite failures and network unreliability. FLP: no algorithm guarantees bounded-time consensus if even one node might fail on an async network — real systems use timeouts as a practical workaround. Raft: leader election (majority vote, randomized timeouts) + log replication (entry committed once on a majority). See [Module 12](modules/12-consensus-coordination-time.md).
+
+### 2f+1 Quorum Sizing
+A cluster of 2f+1 nodes tolerates f failures while still reaching a majority; why consensus clusters use odd sizes (3, 5, 7) — even sizes (4, 6) add cost without added fault tolerance. Majority-based election is why at most one leader can exist per term even during a partition. See [Module 12](modules/12-consensus-coordination-time.md).
+
+### Fencing Token
+A monotonically increasing token issued with each distributed lock grant; the protected resource itself rejects any operation with a stale (lower) token. Fixes the "pause of death" scenario where a lock holder wrongly believes it still holds an expired lock. See [Module 12](modules/12-consensus-coordination-time.md).
+
+### Phi Accrual Failure Detector / Gossip Protocol
+Phi-accrual: computes a continuous suspicion score from historical heartbeat inter-arrival distribution instead of a single fixed timeout, avoiding the false-positive/slow-detection trade-off of hard cutoffs. Gossip: nodes exchange failure-detection state with random peers, propagating epidemically instead of all-to-all (O(n²)) heartbeating. See [Module 12](modules/12-consensus-coordination-time.md).
+
+### Lamport Clock / Vector Clock
+Logical clocks that order events by causality instead of untrustworthy wall-clock time. Lamport: a single counter giving a causally-consistent partial order (happened-before implies smaller timestamp, not the reverse). Vector clock: one counter per node, can definitively detect before/after/concurrent — the principled alternative to LWW's timestamp guessing. See [Module 12](modules/12-consensus-coordination-time.md).
